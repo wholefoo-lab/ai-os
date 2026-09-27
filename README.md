@@ -207,7 +207,7 @@ A governed company document library — not a fourth physical store, but a catal
 **Managed Website (done-for-you, agent-buyable)** — Hands-off option for clients who don't want to self-host: $997 one-time setup + $250/month hosting & maintenance. AI OS designs, builds, and hosts your site on the VPS (custom domain + TLS included) and keeps it maintained. Purchasable directly by an agent through Auto-Mode (gated by human approval).
 
 
-All tiers are self-hosted — you run on your own infrastructure with your own domain and API keys. Custom domain support is included in every self-hosted tier (the free hosted demo is the only exception).
+All tiers except the free hosted demo are self-hosted — you run on your own infrastructure with your own domain and API keys. Custom domain support is included in every self-hosted tier.
 
 ### Hermes Agent (Persistent MCP)
 - **Walkaway Mode** — Delegate tasks that run autonomously in the background
