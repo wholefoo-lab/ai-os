@@ -4,6 +4,8 @@ Documentation=https://github.com/wholefoo/ai-os
 # Start after the app so board.sqlite exists and its schema/migrations are applied.
 After=network-online.target ai-os-hermes.service
 Wants=network-online.target
+StartLimitIntervalSec=300
+StartLimitBurst=5
 
 [Service]
 Type=simple
@@ -19,8 +21,6 @@ ExecStart=@NODE_BIN@/node lib/board/run-dispatcher.js
 
 Restart=on-failure
 RestartSec=10s
-StartLimitIntervalSec=300
-StartLimitBurst=5
 
 # ---- Deliberately NOT hardened -------------------------------------------
 # Unlike ai-os-hermes.service, this unit sets NO seccomp directives (NoNewPrivileges / RestrictSUIDSGID
