@@ -3,6 +3,7 @@ Description=AI OS (Hermes coding instance — isolated, non-production)
 Documentation=https://github.com/wholefoo/ai-os
 After=network-online.target
 Wants=network-online.target
+# The burst limit keeps a crash-loop from hammering the API key.
 StartLimitIntervalSec=300
 StartLimitBurst=5
 
@@ -21,7 +22,7 @@ ExecStart=@NODE_BIN@/node server.js
 
 # ---- Restart policy ------------------------------------------------------
 # on-failure, not always: a clean exit is a deliberate stop and should stay
-# stopped. The burst limit keeps a crash-loop from hammering the API key.
+# stopped.
 Restart=on-failure
 RestartSec=10s
 
