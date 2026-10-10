@@ -3,6 +3,8 @@ Description=AI OS (Hermes coding instance — isolated, non-production)
 Documentation=https://github.com/wholefoo/ai-os
 After=network-online.target
 Wants=network-online.target
+StartLimitIntervalSec=300
+StartLimitBurst=5
 
 [Service]
 Type=simple
@@ -22,8 +24,6 @@ ExecStart=@NODE_BIN@/node server.js
 # stopped. The burst limit keeps a crash-loop from hammering the API key.
 Restart=on-failure
 RestartSec=10s
-StartLimitIntervalSec=300
-StartLimitBurst=5
 
 # NOTE: there is deliberately no RuntimeMaxSec. A wall clock here would kill
 # the SERVER on a timer, which is not what we want — the per-TASK ceiling is
