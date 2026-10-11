@@ -464,3 +464,4 @@ Full documentation at `/docs` when the server is running, covering architecture,
 ## License
 
 Proprietary. All rights reserved.
+<!-- Verified by the Hermes-Dev standalone server cutover, 2026-10-11. -->
