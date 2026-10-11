@@ -125,7 +125,7 @@ bill), `--turns` (80), `--timeout` (45m), `--model` (sonnet; pass `opus` for har
 a time. The usage-credit cap in claude.ai is **account-wide** — it bounds the operator's own overflow
 use too, and tasks share the plan's allowance, so prefer off-hours runs.
 
-## Phase 2: the Coding Board (a durable queue in the dashboard)
+## Phase 2: the Coding Board (a durable task queue)
 
 The board (dashboard → **Coding Board**) is a durable SQLite queue in front of the same runner. You
 file tasks (in the UI, or from outside via `POST /api/board/intake`); a dumb **dispatcher** claims the
