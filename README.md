@@ -130,7 +130,7 @@ A clone is a replica of one specific person — their voice, expertise, decision
 - **Agent-Buyable Offers** — High-impact purchases (e.g. the Managed Website add-on) route through the gate rather than running unattended
 
 ### Process-Verified Reasoning
-- **Steps graded before the next runs** — an agent's work is decomposed into steps, each verified before the next; a step's proposed action **cannot execute unless the step verified** (structural, not a convention), and an ambiguous verdict is never a pass
+- **Steps graded before the next runs** — an agent's work is decomposed into steps, each verified before the next; a step's proposed action **cannot execute unless the step is verified** (structural, not a convention), and an ambiguous verdict is never a pass
 - **Three patterns for any pipeline stage** — `verified-steps`, `reflexion` (a retry that names what went wrong), `tree-search` (branch, score, backtrack out of dead ends); each turns one call into several, so each carries a hard call budget and reports what it spent
 - **Checked against a live model, not a mock** — the parsers' assumptions about reply shapes were verified in eight live runs; the checks are repeatable (`tools/verify-reasoning-live.js`)
 - **Truncation is reported, not hidden** — every agent result carries the API's own stop reason, so a cut-off reply is flagged rather than passed as complete
