@@ -4,6 +4,8 @@
     "server.js",
     "tools/test-audit-repairs.js",
     "tools/test-audit-smoke.js",
+    "tools/test-agent-worker.js",
+    "tools/test-csp-inline-hashes.js",
     "tools/test-review-followup.js",
     "tools/test-astra-routing.js",
     "tools/verify-build-worker.js",
@@ -182,6 +184,16 @@
     "../commercial/**"
   ],
   "ignoreExports": [
+    {
+      "file": "agent-worker/pipeline.js",
+      "exports": [
+        "EMPLOYEE_PROFILES",
+        "getProfile",
+        "greeting",
+        "createAgent",
+        "createSession"
+      ]
+    },
     {
       "file": "lib/orchestrator.js",
       "exports": [
