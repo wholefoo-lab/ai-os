@@ -8,12 +8,7 @@
 'use strict';
 const assert = require('assert');
 const { sanitizeHtml, htmlToText, safeUrl } = require('../lib/web-studio/sanitize-html');
-
-let pass = 0, fail = 0;
-const t = (name, fn) => {
-  try { fn(); pass++; }
-  catch (e) { fail++; console.log('  FAIL ' + name + '\n        ' + e.message.split('\n')[0]); }
-};
+const { t, finish } = require('./test-util').makeRunner();
 // Assert a dangerous substring is absent from the OUTPUT, case-insensitively.
 const absent = (out, needle, label) =>
   assert.ok(!out.toLowerCase().includes(needle.toLowerCase()), label + ' — found "' + needle + '" in: ' + out);
@@ -255,5 +250,4 @@ t('null and undefined are handled', () => {
   assert.strictEqual(htmlToText(null), '');
 });
 
-console.log('  ' + pass + ' passed, ' + fail + ' failed');
-process.exit(fail ? 1 : 0);
+finish();

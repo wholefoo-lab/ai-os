@@ -10,12 +10,7 @@
 const assert = require('assert');
 const A = require('../lib/web-studio/articles');
 const P = require('../lib/web-studio/pipeline');
-
-let pass = 0, fail = 0;
-const t = (name, fn) => {
-  try { fn(); pass++; }
-  catch (e) { fail++; console.log('  FAIL ' + name + '\n        ' + e.message.split('\n')[0]); }
-};
+const { t, finish } = require('./test-util').makeRunner();
 const NOW = '2026-09-18T00:00:00.000Z';
 const entry = (a) => A.normalizeArticle(a, { now: NOW });
 const plan = (entries, extra = {}) => ({ siteName: 'Demo', domain: 'demo.example', pages: [{ path: '/', title: 'Home', sections: [] }], articles: entries, ...extra });
@@ -204,5 +199,4 @@ t('the layout advertises the feed only when it will exist', () => {
   assert.ok(!noEntries.includes('application/rss+xml'), 'advertised an empty feed');
 });
 
-console.log('  ' + pass + ' passed, ' + fail + ' failed');
-process.exit(fail ? 1 : 0);
+finish();

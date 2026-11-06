@@ -9,12 +9,7 @@
 'use strict';
 const assert = require('assert');
 const A = require('../lib/web-studio/articles');
-
-let pass = 0, fail = 0;
-const t = (name, fn) => {
-  try { fn(); pass++; }
-  catch (e) { fail++; console.log('  FAIL ' + name + '\n        ' + e.message.split('\n')[0]); }
-};
+const { t, finish } = require('./test-util').makeRunner();
 const NOW = '2026-09-18T00:00:00.000Z';
 const norm = (a, opts = {}) => A.normalizeArticle(a, { now: NOW, ...opts });
 const throws = (fn, re, label) => {
@@ -233,5 +228,4 @@ t('featured accepts booleans and the form strings, rejects anything else', () =>
   throws(() => norm({ title: 'T', featured: 'yes' }), /featured/, 'yes');
 });
 
-console.log('  ' + pass + ' passed, ' + fail + ' failed');
-process.exit(fail ? 1 : 0);
+finish();
