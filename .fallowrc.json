@@ -9,6 +9,7 @@
     "tools/test-tts-request.js",
     "tools/test-review-followup.js",
     "tools/test-astra-routing.js",
+    "tools/test-test-util.js",
     "tools/verify-build-worker.js",
     "tools/update-nginx-microphone.js",
     "agent-worker/agent.js",

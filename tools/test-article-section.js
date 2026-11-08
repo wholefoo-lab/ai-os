@@ -7,12 +7,7 @@
 'use strict';
 const assert = require('assert');
 const { renderSection, renderBase, renderPage, astroSafe, planHasArticle } = require('../lib/web-studio/pipeline');
-
-let pass = 0, fail = 0;
-const t = (name, fn) => {
-  try { fn(); pass++; }
-  catch (e) { fail++; console.log('  FAIL ' + name + '\n        ' + e.message.split('\n')[0]); }
-};
+const { t, finish } = require('./test-util').makeRunner();
 const absent = (out, needle, label) =>
   assert.ok(!out.toLowerCase().includes(needle.toLowerCase()), label + ' — found "' + needle + '" in: ' + out.slice(0, 400));
 
@@ -231,5 +226,4 @@ t('the prose stylesheet keeps anchor targets clear of a sticky header', () => {
   assert.ok(/\.ws-article \[id\]\{scroll-margin-top/.test(out), 'no scroll-margin rule for anchors');
 });
 
-console.log('  ' + pass + ' passed, ' + fail + ' failed');
-process.exit(fail ? 1 : 0);
+finish();

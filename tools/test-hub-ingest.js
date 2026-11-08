@@ -7,13 +7,8 @@
 'use strict';
 const assert = require('assert');
 const I = require('../lib/web-studio/ingest');
-const { serverSource } = require('./test-util');
-
-let pass = 0, fail = 0;
-const t = (name, fn) => {
-  try { fn(); pass++; }
-  catch (e) { fail++; console.log('  FAIL ' + name + '\n        ' + e.message.split('\n')[0]); }
-};
+const { serverSource, makeRunner } = require('./test-util');
+const { t, finish } = makeRunner();
 const NOW = '2026-09-18T00:00:00.000Z';
 const run = (body, list = [], opts = {}) => I.prepareBatch(body, list, { now: NOW, ...opts });
 const ok = (r) => { assert.ok(!r.errors, 'unexpected errors: ' + JSON.stringify(r.errors)); return r; };
@@ -182,5 +177,4 @@ t('a rejected batch reports 422 and writes nothing', () => {
   assert.ok(!/saveState|wsApplyPlanChange|site\.plan =/.test(rejected), 'the rejection path writes');
 });
 
-console.log('  ' + pass + ' passed, ' + fail + ' failed');
-process.exit(fail ? 1 : 0);
+finish();

@@ -15,11 +15,7 @@ const assert = require('assert');
 const A = require('../lib/web-studio/adopt');
 const { normalizeArticle } = require('../lib/web-studio/articles');
 
-let pass = 0, fail = 0;
-const t = (name, fn) => {
-  try { fn(); pass++; }
-  catch (e) { fail++; console.log('  FAIL ' + name + '\n        ' + e.message.split('\n')[0]); }
-};
+const { t, finish } = require('./test-util').makeRunner();
 const textOf = (h) => String(h || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 
 console.log('adopt-header');
@@ -148,5 +144,4 @@ t('a recovered date always wins over both', () => {
   assert.strictEqual(a.publishedAt, '2023-06-24T12:00:00.000Z');
 });
 
-console.log('  ' + pass + ' passed, ' + fail + ' failed');
-process.exit(fail ? 1 : 0);
+finish();

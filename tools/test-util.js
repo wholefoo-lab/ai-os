@@ -106,4 +106,23 @@ const seclintFixture = (prefix) => {
   };
 };
 
-module.exports = { assert, done, requireFinish, cleanupAndFinish, serverSource, repoRoot, readRepoFile, seclintFixture };
+// A second micro-harness, distinct from assert()/done() above: `t(name, fn)` + a running pass/fail
+// tally + a `finish()` that prints the summary and sets the exit code. Seven tools/test-*.js suites
+// had each hand-rolled the identical five-line `let pass, fail; const t = ...` head and two-line
+// summary/exit footer — tripped fallow's duplication gate at minOccurrences:3 the same way
+// readRepoFile and seclintFixture did above. Returns a fresh { t, finish } per call so each suite
+// keeps its own counters (no shared module-level state across suites run in the same process).
+const makeRunner = () => {
+  let pass = 0, fail = 0;
+  const t = (name, fn) => {
+    try { fn(); pass++; }
+    catch (e) { fail++; console.log('  FAIL ' + name + '\n        ' + e.message.split('\n')[0]); }
+  };
+  const finish = () => {
+    console.log('  ' + pass + ' passed, ' + fail + ' failed');
+    process.exit(fail ? 1 : 0);
+  };
+  return { t, finish };
+};
+
+module.exports = { assert, done, requireFinish, cleanupAndFinish, serverSource, repoRoot, readRepoFile, seclintFixture, makeRunner };
