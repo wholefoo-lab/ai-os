@@ -1,6 +1,6 @@
 # AI OS — The Agentic Operating System
 
-A multi-agentic AI operating system built as a Virtual Corporate Headquarters, orchestrating 73 specialized AI agents across 11 departments, powered by 6 AI models across 4 routing tiers. Research, create, analyze, scrape, build and host websites, run an SEO + AEO agency, manage clients, manage a governed document library, and monetize — all from a single dashboard. Self-hosted, single-customer, open-source core (Community edition) with commercial licenses: Business $1,997 one-time (all 73 agents, all production tools, self-instance theming) and Enterprise $4,997 one-time (everything in Business + SSO/SAML, advanced security, custom agents). All tiers run on your own infrastructure.
+AI OS is a multi-agentic AI operating system built as a Virtual Corporate Headquarters. It orchestrates 73 specialized AI agents across 11 departments, powered by 6 AI models across 4 routing tiers. Research, create, analyze, scrape, build and host websites, run an SEO + AEO agency, manage clients, manage a governed document library, and monetize — all from a single dashboard. The platform has a self-hosted, single-customer, open-source core (Community edition) with commercial licenses: Business $1,997 one-time (all 73 agents, all production tools, self-instance theming) and Enterprise $4,997 one-time (everything in Business + SSO/SAML, advanced security, custom agents). All tiers run on your own infrastructure.
 
 ## Architecture
 
