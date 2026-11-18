@@ -14,7 +14,7 @@ Positioning: **first-party, cookieless, AI-signal-first analytics** — traditio
 - **Bot hits by engine and purpose.** Classify user-agents against a maintained registry (reuse + extend the AI-crawler list from the AEO robots-allowlist feature, `lib/aeo`):
   - *Training crawlers*: GPTBot, ClaudeBot, Google-Extended, CCBot, Applebot-Extended, Meta-ExternalAgent, Bytespider, Amazonbot
   - *Search/index crawlers*: OAI-SearchBot, Claude-SearchBot, PerplexityBot, Bingbot, DuckAssistBot
-  - *Live user-triggered fetchers* (a human asked an AI about you **right now**): ChatGPT-User, Claude-User, Perplexity-User, Gemini fetches, copilot
+  - *Live user-triggered fetchers* (a human asked an AI about you **right now**): ChatGPT-User, Claude-User, Perplexity-User, Gemini fetches, Copilot
 - **Per-page crawl heat**: which URLs each engine fetches most — this is the engines telling us which content they consider answer-worthy.
 - **Crawl freshness**: time since each engine last fetched each key page. Stale crawl = stale answers about the client.
 - **Bot hygiene**: robots.txt fetches, 404s served to bots, llms.txt fetches (an explicit AEO signal), status-code mix per bot.
